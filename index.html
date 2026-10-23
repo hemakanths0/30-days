@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101522">
+  <meta name="description" content="A calm, personal 30-day reset dashboard for study, learning, training, and habits.">
+  <title>My 30-Day Reset</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#overview" data-view="overview" aria-label="My 30-Day Reset home">
+        <span class="brand-mark"><i data-lucide="orbit"></i></span>
+        <span><strong>RESET</strong><small>30-DAY SYSTEM</small></span>
+      </a>
+      <div class="sidebar-label">WORKSPACE</div>
+      <nav class="primary-nav" aria-label="Main navigation">
+        <button class="nav-link active" data-view="overview"><i data-lucide="layout-dashboard"></i><span>Overview</span></button>
+        <button class="nav-link" data-view="planner"><i data-lucide="calendar-days"></i><span>Daily planner</span></button>
+        <button class="nav-link" data-view="learning"><i data-lucide="book-open-check"></i><span>Learning roadmap</span></button>
+        <button class="nav-link" data-view="gym"><i data-lucide="dumbbell"></i><span>Gym tracker</span></button>
+        <button class="nav-link" data-view="habits"><i data-lucide="list-checks"></i><span>Habit tracker</span></button>
+        <button class="nav-link" data-view="reports"><i data-lucide="chart-no-axes-column-increasing"></i><span>Progress reports</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="challenge-mini">
+          <div class="challenge-mini-top"><span>30-DAY RESET</span><i data-lucide="sparkles"></i></div>
+          <strong id="sidebar-day">Day 1 of 30</strong>
+          <div class="progress-track"><span id="sidebar-progress"></span></div>
+          <small id="sidebar-start-label">A little progress, daily.</small>
+        </div>
+        <div class="storage-note"><span class="storage-dot"></span>Saved on this device</div>
+      </div>
+    </aside>
+
+    <div class="main-column">
+      <header class="topbar">
+        <div class="topbar-title-wrap">
+          <button class="icon-button menu-button" id="menu-toggle" aria-label="Open navigation" title="Open navigation"><i data-lucide="menu"></i></button>
+          <div><div class="eyebrow" id="today-label">YOUR RESET, YOUR PACE</div><h1 id="page-title">Overview</h1></div>
+        </div>
+        <div class="topbar-actions">
+          <div class="today-date"><i data-lucide="calendar"></i><span id="header-date"></span></div>
+          <button class="button button-quiet" id="export-data"><i data-lucide="download"></i><span>Export</span></button>
+          <button class="icon-button" id="clear-data" aria-label="Clear saved data" title="Clear saved data"><i data-lucide="trash-2"></i></button>
+        </div>
+      </header>
+      <main id="view-root" class="view-root" tabindex="-1"></main>
+      <footer class="page-footer"><span>Small steps count. Rest is part of the plan.</span><span>Personal dashboard · local data only</span></footer>
+    </div>
+  </div>
+  <div class="mobile-scrim" id="mobile-scrim"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <section class="assistant-panel" id="assistant-panel" aria-label="AI chat assistant" aria-hidden="true">
+    <header class="assistant-header">
+      <div class="assistant-identity"><span class="assistant-avatar"><i data-lucide="sparkles"></i></span><div><strong>Reset assistant</strong><small><span class="assistant-status-dot"></span>Ready when you are</small></div></div>
+      <div class="assistant-header-actions"><button class="assistant-icon-button" id="assistant-stop-speaking" type="button" aria-label="Stop spoken reply" title="Stop spoken reply"><i data-lucide="volume-x"></i></button><button class="assistant-icon-button" id="assistant-clear" type="button" aria-label="Clear chat" title="Clear chat"><i data-lucide="trash-2"></i></button><button class="assistant-icon-button" id="assistant-close" type="button" aria-label="Close assistant" title="Close assistant"><i data-lucide="x"></i></button></div>
+    </header>
+    <div class="assistant-messages" id="assistant-messages" role="log" aria-live="polite" aria-relevant="additions text"></div>
+    <div class="assistant-quick-prompts" id="assistant-prompts" aria-label="Suggested prompts">
+      <button type="button" data-prompt="Plan my day.">Plan my day.</button>
+      <button type="button" data-prompt="Teach me Python.">Teach me Python.</button>
+      <button type="button" data-prompt="Explain a machine-learning concept.">Explain a machine-learning concept.</button>
+      <button type="button" data-prompt="Help me get back on track.">Help me get back on track.</button>
+      <button type="button" data-prompt="Review my daily progress.">Review my daily progress.</button>
+    </div>
+    <form class="assistant-composer" id="assistant-form">
+      <textarea id="assistant-input" rows="1" maxlength="2000" placeholder="Ask for a small next step..." aria-label="Message assistant"></textarea>
+      <div class="assistant-composer-actions"><span class="assistant-hint">Enter to send · Shift+Enter for a new line</span><div><button class="assistant-icon-button assistant-voice-button" id="assistant-voice" type="button" aria-label="Start voice input" title="Start voice input"><i data-lucide="mic"></i></button><button class="assistant-send" id="assistant-send" type="submit" aria-label="Send message" title="Send message"><i data-lucide="arrow-up"></i></button></div></div>
+    </form>
+    <div class="assistant-disclaimer" id="assistant-disclaimer">AI replies use the configured server. Chat stays in this browser.</div>
+  </section>
+  <button class="assistant-launcher" id="assistant-launcher" type="button" aria-label="Open AI chat assistant" aria-expanded="false" title="Chat with your reset assistant"><i data-lucide="message-circle"></i><span class="assistant-launcher-pulse"></span></button>
+</body>
+</html>
